@@ -1,0 +1,246 @@
+h1 {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 24px;
+}
+
+body, html {
+  color: #2C3E50;
+  height: 100%;
+  margin: 0;
+  background-color: #FAF9F6;
+  font-family: 'Inter', sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: #FFFFFF;
+  border-color: #E0E0E0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+}
+
+.form-option {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-option {
+  margin-top: 50px;
+}
+
+.input-row {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.input-with-button {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.input-with-button input {
+  width: 100%;
+  padding: 8px 100px 8px 12px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.input-with-button .plus-button {
+  position: absolute;
+  border: none;
+  right: 4px;
+  bottom: 4px;
+  top: 4px;
+  cursor: pointer;
+  background-color: #5567DD;
+  color: #FFFFFF;
+}
+
+.input-with-button .add-option-button {
+  position: absolute;
+  border: none;
+  right: 4px;
+  bottom: 4px;
+  top: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer
+}
+
+#clearOptions {
+  background: none;
+  border: none;
+  color: #FF2353;
+  cursor: pointer;
+}
+
+.optionItem {
+  list-style-type: none;
+  margin-left: -25px;
+}
+
+/*Presets*/
+
+.preset-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.preset-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.preset-dropdown {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 14px;
+}
+
+.preset-function {
+  display: flex;
+  gap: 10px;
+}
+
+.preset-button {
+  background-color: #5567DD;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.remove-option-button {
+  margin-left: 10px;
+  right: 4px;
+  bottom: 4px;
+  border: none;
+  background-color: #5567DD;
+  color: white;
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.spin-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.spin-button {
+  background-color: #5567DD;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.box canvas {
+  max-width: 100%;
+}
+
+.options-container {
+  width: 100%;
+  text-align: center;
+}
+
+.wheel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  gap: 1rem;
+}
+
+.wheel-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+#wheel {
+  display: block;
+  margin: 0 auto;;
+}
+
+.spinomo-says {
+  font-family: 'Pixelify Sans', cursive;
+  font-size: 24px;
+}
+
+.results-container {
+  text-align: center;
+  padding: 1rem;
+  background-color: #F1F8FF;
+  border-radius: 8px; 
+  margin-top: 1rem;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#result {
+  font-size: 1.2rem;
+  color: #2C3E50;
+  margin: 0;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.pointer {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 35px solid #5567DD;
+  z-index: 10;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #444;
+}

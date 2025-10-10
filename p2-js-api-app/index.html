@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinomo</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <div class="title">
+      <h1>Spinomo</h1>
+      <p>Spin your decision!</p>
+    </div>
+
+    <div class="box">
+      <h2>Settings</h2>
+      <div class="preset-controls">
+        <div class="preset-selector">
+          <label for ="presets">Presets:</label>
+          <select id="presets" name="presets" class="preset-dropdown">
+            <option value="">Select a preset</option>
+            <option value="workout">Workout Ideas</option>
+            <option value="custom">Custom Set</option>
+          </select>
+          <div class="preset-function">
+            <button onclick="savePreset()" class="preset-button">Save Set</button>
+            <button onclick="loadPreset()" class="preset-button">Load Set</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="box">
+      <h2>Wheel Area</h2>
+      <div class="wheel-container">
+        <div class="pointer"></div>
+        <div class="wheel-wrapper">
+          <canvas id="wheel" width="400" height="400"></canvas>
+        </div>
+
+        <div class="options-container" id="options-container">
+          <h4>Your ideas or options will be here ⬇️</h4>
+            <ul id="optionsList">
+            </ul>
+        </div>
+      </div>
+      <div class="spin-button-container">
+        <button onclick="spin()" class="spin-button">Spin!</button>
+      </div>
+
+      <div class="input-option">
+        <h3>Your Entries:</h3>
+        <div class="form-option" id="form-option">
+          <div class="input-row">
+            <div class="input-with-button">
+              <input type="text" id="option1" placeholder="Example: Movie Night">
+              <button type="button" onclick="addOption('option1')" class="plus-button">+</button><br>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-with-button">
+              <input type="text" id="option2" placeholder="Enter an idea (e.g. Pizza Party)">
+              <button type="button" onclick="addOption('option2')" class="add-option-button">+ Add Option</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="clearOptions">
+          <input type="button" id="clearOptions" onclick="clearOptions()" value="Clear All"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+
+      <h2 class="spinomo-says">Spinomo says...</h2>
+      <div class="results-container">
+        <p id ="result">Results will be displayed here</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Created by Dean <br>
+        Here's my socials:
+      <a href="https://github.com/dencioo" target="_blank">Github</a>
+      <a href="https://www.linkedin.com/in/paldeanharley/" target="_blank">LinkedIn</a>
+      </p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
