@@ -28,6 +28,33 @@ body, html {
   box-sizing: border-box;
 }
 
+/* Grid layout for Settings and Wheel Area */
+.settings-wheel-container {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 4rem;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.settings-wheel-container .box:first-child {
+  max-height: 700px; 
+}
+
+/* Shared box styling */
+.settings-wheel-container .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Prevent Wheel box from stretching vertically */
+.settings-wheel-container .box:last-child {
+  align-self: start;
+}
+
+
 .box {
   background-color: #FFFFFF;
   border-color: #E0E0E0;
@@ -38,6 +65,8 @@ body, html {
   padding: 1.5rem;
 }
 
+
+/* Input sections inside Settings */
 .form-option {
   display: flex;
   flex-direction: column;
@@ -47,11 +76,13 @@ body, html {
   margin-top: 50px;
 }
 
+/* Input field and button layout */
 .input-row {
   margin-bottom: 10px;
   position: relative;
 }
 
+/* Buttons inside input fields */
 .input-with-button {
   position: relative;
   display: inline-block;
@@ -87,6 +118,7 @@ body, html {
   cursor: pointer
 }
 
+/* Clear all button */
 #clearOptions {
   background: none;
   border: none;
@@ -94,9 +126,25 @@ body, html {
   cursor: pointer;
 }
 
+#optionsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 0.5rem; 
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px; 
+  text-align: left;
+}
+
 .optionItem {
-  list-style-type: none;
-  margin-left: -25px;
+  background-color: #F8F9FC;
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  word-break: break-word;
 }
 
 /*Presets*/
@@ -203,10 +251,19 @@ body, html {
   font-size: 24px;
 }
 
+.results-box {
+  margin-top: auto;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
 .results-container {
   text-align: center;
   padding: 1rem;
   background-color: #F1F8FF;
+  border: 1px solid #E0E0E0;
   border-radius: 8px; 
   margin-top: 1rem;
   min-height: 80px;
@@ -238,9 +295,37 @@ body, html {
   z-index: 10;
 }
 
+/* Toast */
+
+.toast {
+  position: fixed;
+  bottom: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #5567DD;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: 'Pixelify Sans', cursive;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
 footer {
   text-align: center;
   margin-top: 20px;
   font-size: 15px;
   color: #444;
+}
+
+/* Mobile support */
+@media (max-width: 768px) {
+  .settings-wheel-container {
+    grid-template-columns: 1fr;
+  }
 }

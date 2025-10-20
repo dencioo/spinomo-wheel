@@ -1,4 +1,4 @@
-import { getRGB } from './api.js';
+import { getRGB } from './utils.js';
 
 const presets = {
   workout: [
@@ -13,6 +13,16 @@ const presets = {
 
 const options = [];
 
+function showToast(message, duration = 2000) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.remove('hidden');
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, duration)
+}
 // Preset
 async function loadPreset() {
   const presetSelect = document.getElementById('presets');
@@ -26,7 +36,7 @@ async function loadPreset() {
       const savedOption = localStorage.getItem('spinomoCustomPreset');
 
       if (!savedOption) {
-        alert('No custom preset saved yet!');
+        showToast('No custom preset saved yet!');
         return;
       }
 
@@ -44,25 +54,25 @@ async function loadPreset() {
     displayOptions();
 
     if (options.length > 0 ) {
-      alert('Preset loaded succesfully');
+      showToast('Preset loaded succesfully');
     }
   }
   catch (error) {
     console.error('Error loading preset:', error);
-    alert('Failed to load preset');
+    showToast('Failed to load preset');
   }
 }
 
 
 function savePreset() {
   if (options.length === 0) {
-    alert(`No options to save`);
+    showToast(`No options to save`);
     return;
   }
 
   const optionsToSave = options.map(opt => opt.text);
   localStorage.setItem('spinomoCustomPreset', JSON.stringify(optionsToSave));
-  alert('Custom set saved successfully!');
+  showToast('Custom set saved successfully!');
 }
 
 // Functions for Input option
@@ -79,16 +89,16 @@ async function addOption(inputID) {
     inputElement.focus();
   }
   else if (!value) {
-    alert('Please enter a valid option.');
+    showToast('Please enter a valid option.');
     inputElement.focus();
   }
   else if (options.some(option => option.text === value)) {
-    alert("You can't add the same option twice :(")
+    showToast("You can't add the same option twice :(")
     inputElement.value = '';
     inputElement.focus();
   }
   else if (options.length >= 10) {
-    alert('Sorry you can only add up to 10 options :(');
+    showToast('Sorry you can only add up to 10 options :(');
     inputElement.focus();
   }
 }
@@ -204,10 +214,14 @@ async function drawWheel() {
   }
 }
 
+const spinSound = new Audio('sounds/spinsounds.mp3')
+const winnerSound = new Audio('sounds/winnersound.mp3')
+spinSound.volume = 0.1;
 let currentRotation = 0;
 function spin() {
+  spinSound.play();
   if (options.length === 0) {
-    alert('Add some option first');
+    showToast('Add some option first');
     return;
   }
   // Random color
@@ -226,12 +240,29 @@ function spin() {
 
   
   setTimeout(() => {
-    const normalRotate =  currentRotation % 360;
-    const pointerAngle = (360 - normalRotate + anglePerOption / 2 ) % 360;
-    const indexAtPointer = Math.floor(pointerAngle / anglePerOption);
+    // Get the final rotation position after animation completes
+    const normalRotate = currentRotation % 360;
+    
+    // Canvas coordinate system: 0 = right (3 o'clock), 90 = bottom, 180 = left, 270 = top
+    // Our pointer is positioned at the top of the wheel, which is 270° in canvas coordinates
+    const pointerPosition = 270;
+    
+    // Calculate which wheel segment is currently under the pointer
+    // We subtract the wheel's rotation from the pointer position to find the segment
+    const adjustedAngle = (pointerPosition - normalRotate) % 360;
+    
+    // Handle negative angles by converting them to positive (0-360 range)
+    const positiveAngle = adjustedAngle < 0 ? adjustedAngle + 360 : adjustedAngle;
+    
+    // Divide by angle per option to find which segment index is at the pointer
+    // Use modulo to ensure we stay within the bounds of the options array
+    const indexAtPointer = Math.floor(positiveAngle / anglePerOption) % options.length;
 
+    // Display the winning option
     const result = options[indexAtPointer];
     document.getElementById('result').textContent = `You got: ${result.text}! 🚀`;
+
+    winnerSound.play();
   }, 3000);
 }
 

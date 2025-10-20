@@ -1,18 +1,7 @@
 export async function getRandomNumber(min = 0, max =  255) {
-  const url = `https://randomnumber-one.vercel.app/number?min=${min}&max=${max}`;
-  
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+  const value = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    if (!response.ok) throw new Error(data);
-    
-    return data;
-  }
-  catch (error) {
-    console.error('Error fetching random number:', error);
-    throw error;
-  }
+  return { value }
 }
 
 export async function getRGB() {
