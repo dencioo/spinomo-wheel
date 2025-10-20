@@ -1,4 +1,4 @@
-import { getRGB } from './api.js';
+import { getRGB } from './utils.js';
 
 const presets = {
   workout: [
