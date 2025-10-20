@@ -204,8 +204,12 @@ async function drawWheel() {
   }
 }
 
+const spinSound = new Audio('sounds/spinsounds.mp3')
+const winnerSound = new Audio('sounds/winnersound.mp3')
+spinSound.volume = 0.1;
 let currentRotation = 0;
 function spin() {
+  spinSound.play();
   if (options.length === 0) {
     alert('Add some option first');
     return;
@@ -232,6 +236,8 @@ function spin() {
 
     const result = options[indexAtPointer];
     document.getElementById('result').textContent = `You got: ${result.text}! 🚀`;
+
+    winnerSound.play();
   }, 3000);
 }
 
