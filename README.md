@@ -4,6 +4,7 @@ Spinomo Wheel is my little interactive web app where you can spin a wheel and le
 
 ## Features
 - Click to spin the wheel and get a random outcome
+- Save and Load Presets
 - Smooth animations for spinning
 - Lightweight and easy to use
 
@@ -15,10 +16,11 @@ Spinomo Wheel is my little interactive web app where you can spin a wheel and le
 ## Project Structure
 ```
 p2-js-api-app/
+├── sounds/
 ├── index.html
 ├── index.css
 ├── app.js
-└── api.js
+└── utils.js
 ```
 
 # Live Demo
