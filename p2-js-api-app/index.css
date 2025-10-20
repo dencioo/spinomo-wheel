@@ -28,6 +28,7 @@ body, html {
   box-sizing: border-box;
 }
 
+/* Grid layout for Settings and Wheel Area */
 .settings-wheel-container {
   display: grid;
   grid-template-columns: 2fr 2fr;
@@ -37,18 +38,18 @@ body, html {
   max-width: 1000px;
 }
 
-/* Keep Settings box scrollable and contained */
 .settings-wheel-container .box:first-child {
   max-height: 700px; 
 }
 
+/* Shared box styling */
 .settings-wheel-container .box {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* Ensure the Wheel box doesn't stretch */
+/* Prevent Wheel box from stretching vertically */
 .settings-wheel-container .box:last-child {
   align-self: start;
 }
@@ -64,6 +65,8 @@ body, html {
   padding: 1.5rem;
 }
 
+
+/* Input sections inside Settings */
 .form-option {
   display: flex;
   flex-direction: column;
@@ -73,11 +76,13 @@ body, html {
   margin-top: 50px;
 }
 
+/* Input field and button layout */
 .input-row {
   margin-bottom: 10px;
   position: relative;
 }
 
+/* Buttons inside input fields */
 .input-with-button {
   position: relative;
   display: inline-block;
@@ -113,6 +118,7 @@ body, html {
   cursor: pointer
 }
 
+/* Clear all button */
 #clearOptions {
   background: none;
   border: none;
@@ -122,13 +128,13 @@ body, html {
 
 #optionsList {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-  gap: 0.5rem; /* Space between items */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 0.5rem; 
   list-style: none;
   padding: 0;
   margin: 0 auto;
   width: 100%;
-  max-width: 300px; /* Optional: control the width */
+  max-width: 300px; 
   text-align: left;
 }
 
@@ -296,7 +302,7 @@ footer {
   color: #444;
 }
 
-/* Stack on mobile */
+/* Mobile support */
 @media (max-width: 768px) {
   .settings-wheel-container {
     grid-template-columns: 1fr;
