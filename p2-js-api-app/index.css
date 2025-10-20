@@ -295,6 +295,27 @@ body, html {
   z-index: 10;
 }
 
+/* Toast */
+
+.toast {
+  position: fixed;
+  bottom: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #5567DD;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: 'Pixelify Sans', cursive;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
 footer {
   text-align: center;
   margin-top: 20px;
